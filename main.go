@@ -17,7 +17,6 @@ func main() {
 		piscine.SetSolve(args[1:], solve)
 		if !piscine.FindSolve(solve) {
 			piscine.PrintStrLn("Error")
-			piscine.PrintSolve(solve)
 		} else {
 			piscine.PrintSolve(solve)
 		}

@@ -13,7 +13,7 @@ setsolveはintの5x5の配列に数字を入れる関数です
 
 ## How to use
 ```
-go mod init rush01
+go mod init ex00
 ```
 ```
 go run main.go

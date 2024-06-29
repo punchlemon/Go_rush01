@@ -7,15 +7,19 @@ import (
 
 func main() {
 	args := os.Args
-	count := 0
-	for range args {
-		count++
-	}
-	if count != 6 || piscine.CheckArgs(args) == 0 {
+	if piscine.CheckArgs(args) == 0 {
 		piscine.PrintStrLn("Error")
 	} else {
-		for _, s := range args[1:] {
-			piscine.PrintStrLn(s)
+		solve := make([][]int, 5)
+		for i := range solve {
+			solve[i] = make([]int, 5)
+		}
+		piscine.SetSolve(args[1:], solve)
+		if !piscine.FindSolve(solve) {
+			piscine.PrintStrLn("Error")
+			piscine.PrintSolve(solve)
+		} else {
+			piscine.PrintSolve(solve)
 		}
 	}
 }

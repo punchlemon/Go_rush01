@@ -51,7 +51,7 @@ func CountUpSolve(solve [][]int) bool {
 			if solve[i][j] > 19 {
 				solve[i][j] = 10
 			} else if solve[i][j] == 10 {
-				solve[i][j] = 20;
+				solve[i][j] = 20
 				return true
 			}
 		}

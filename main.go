@@ -11,12 +11,11 @@ func main() {
 	for range args {
 		count++
 	}
-	if count != 6 {
-		piscine.PrintStr("Error")
+	if count != 6 || piscine.CheckArgs(args) == 0 {
+		piscine.PrintStrLn("Error")
 	} else {
 		for _, s := range args[1:] {
-			piscine.PrintStr(s)
-			piscine.PrintStr("\n")
+			piscine.PrintStrLn(s)
 		}
 	}
 }

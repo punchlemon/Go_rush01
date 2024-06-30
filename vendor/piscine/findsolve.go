@@ -122,10 +122,10 @@ func CountUpSolve(solve [][]int) bool {
 
 func FindSolve(solve [][]int) bool {
 	for {
-		res := !CountUpSolve(solve)
 		if CheckSolve(solve) {
 			return true
-		} else if res {
+		}
+		if !CountUpSolve(solve) {
 			return false
 		}
 	}

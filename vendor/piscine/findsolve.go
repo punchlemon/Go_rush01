@@ -1,13 +1,10 @@
 package piscine
 
 func CheckCell(n int, count *int) bool {
-	if n == 0 {
-		(*count)++
-	} else if n > 0 && n < 20 {
-		(*count)++
-	} else if n > 19 {
+	if n <= 0 || n >= 20 {
 		return false
 	}
+	(*count)++
 	return true
 }
 

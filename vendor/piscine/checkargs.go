@@ -8,7 +8,7 @@ func CheckArgs(args []string) int {
 		count := 0
 		for _, c := range s {
 			count++
-			if c != '.' && (c < '1' || c > '9') {
+			if c != '.' && (c < '2' || c > '9') {
 				return 0
 			}
 		}

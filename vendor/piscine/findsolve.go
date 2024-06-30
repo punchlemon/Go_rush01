@@ -1,7 +1,7 @@
 package piscine
 
 func CheckCell(n int, count *int) bool {
-	if n <= 0 || n >= 20 {
+	if n <= 1 || n >= 20 {
 		return false
 	}
 	(*count)++

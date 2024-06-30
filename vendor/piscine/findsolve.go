@@ -33,6 +33,57 @@ func CheckRowCol(solve [][]int, i, j int) bool {
 	return count == solve[i][j]
 }
 
+func ContinuationUp(solve [][]int, i, j, up int) {
+	if solve[i][j] > 1 && solve[i][j] < 20 {
+		solve[i][j] += up
+		if i > 0 {
+			ContinuationUp(solve, i-1, j, up)
+		}
+		if i < 4 {
+			ContinuationUp(solve, i+1, j, up)
+		}
+		if j > 0 {
+			ContinuationUp(solve, i, j-1, up)
+		}
+		if j < 4 {
+			ContinuationUp(solve, i, j+1, up)
+		}
+	}
+}
+
+func CheckConnect(solve [][]int) bool {
+	var res bool = true
+	var up int = 100
+	var col int = -1
+	var row int = 0
+	for {
+		if col < 4 {
+			ContinuationUp(solve, col+1, row, up)
+			break
+		} else if row < 4 {
+			ContinuationUp(solve, 0, row+1, up)
+			break
+		} else {
+			return res
+		}
+	}
+	for i := range solve {
+		for j := range solve[i] {
+			if solve[i][j] > 1 && solve[i][j] < 20 {
+				res = false
+			}
+		}
+	}
+	for i := range solve {
+		for j := range solve[i] {
+			if solve[i][j] > up {
+				solve[i][j] -= up
+			}
+		}
+	}
+	return res
+}
+
 func CheckSolve(solve [][]int) bool {
 	for i := range solve {
 		for j := range solve[i] {
@@ -48,6 +99,9 @@ func CheckSolve(solve [][]int) bool {
 				}
 			}
 		}
+	}
+	if !CheckConnect(solve) {
+		return false
 	}
 	return true
 }

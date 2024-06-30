@@ -1,11 +1,10 @@
 package piscine
 
 func CheckCell(n int, count *int) bool {
-	if n > 0 && n < 20 {
-		(*count)++
-	} else if n > 19 {
+	if n <= 0 || n >= 20 {
 		return false
 	}
+	(*count)++
 	return true
 }
 
@@ -39,6 +38,14 @@ func CheckSolve(solve [][]int) bool {
 		for j := range solve[i] {
 			if solve[i][j] > 0 && solve[i][j] < 10 && !CheckRowCol(solve, i, j) {
 				return false
+			}
+			if solve[i][j] == 20 {
+				if (i > 0 && solve[i-1][j] == 20) ||
+					(i < 4 && solve[i+1][j] == 20) ||
+					(j > 0 && solve[i][j-1] == 20) ||
+					(j < 4 && solve[i][j+1] == 20) {
+					return false
+				}
 			}
 		}
 	}
